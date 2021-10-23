@@ -38,14 +38,21 @@ var con = mysql.createConnection({
   password: "",
   database: "mydb_node"
 });
-
+ /*
 con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  /*Create a table named "customers":*/
-  var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255) , email varchar(25))";
-  con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("Table created");
+    console.log("Connected!");
+    var sql = "INSERT INTO customers_updated (name, address,email) VALUES ('Rubel Hossain', 'Dhaka , Bangladesh','rubel@gmail.com')";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+    });
   });
-});
+*/
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM customers_updated", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
